@@ -27,7 +27,7 @@ export default {
     mounted:function(){
         setInterval(()=>{
         this.getdata()
-      },5000);
+      },1000);
     },
     methods:{
         stepReset(){
