@@ -1,10 +1,7 @@
 <template>
     <v-container>
         <center>
-            <v-layout row justify-center> 
-                <p>步數: {{step}} &nbsp;&nbsp;&nbsp;</p>
-                <v-btn small @click = stepReset()>重置</v-btn>
-            </v-layout>
+            
             <br>
             <p>電池電量: {{battery}} &nbsp;&nbsp;&nbsp;</p>
             <br>

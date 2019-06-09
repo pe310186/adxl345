@@ -310,6 +310,7 @@ void uploadGPS(String lat,String lon,String high){
  Serial.println("GPStest");
 
     //確保連線正常
+    
  while (0 == content.connect(SITE_URL, 80))
     {
       Serial.println("Re-Connecting to WebSite");
@@ -318,19 +319,37 @@ void uploadGPS(String lat,String lon,String high){
   
 //資料上傳
   content.println("POST /mcs/v2/devices/DMWq5R7i/datapoints.csv HTTP/1.1");
-  
-  String data = "1,,"+lat+","+lon+","+high;
-  
-  int dataLength = data.length();
-  
-  content.println("Host: api.mediatek.com");
-  content.println("deviceKey: 2XlQ1UH0qUW3CIJn");
-  content.print("Content-Length: ");
-  content.println(dataLength);
-  content.println("Content-Type: text/csv");
-  content.println("Connection: close");
-  content.println();
-  content.println(data);
+
+
+String data = "2,,"+lat+","+lon + "," + high;
+
+int dataLength = data.length();
+
+content.println("Host: api.mediatek.com");
+content.println("deviceKey: 2XlQ1UH0qUW3CIJn");
+content.print("Content-Length: ");
+content.println(dataLength);
+content.println("Content-Type: text/csv");
+content.println("Connection: close");
+content.println();
+content.println(data);
+
+//  while (content)
+//  {
+//    int v = content.read();
+//    if (v != -1)
+//    {
+//      Serial.print((char)v);
+//    }
+//    else
+//    {
+//      Serial.println("no more content, disconnect");
+//      while (1)
+//      {
+//        delay(1);
+//      }
+//    }
+//  }
 
   
 }
@@ -340,6 +359,7 @@ void uploadGPS(String lat,String lon,String high){
 void uploadBattery(){
   
   //確保連線正常
+   
  while (0 == content.connect(SITE_URL, 80))
     {
       Serial.println("Re-Connecting to WebSite");
@@ -369,6 +389,7 @@ content.println(data);
 //計步資料上傳
 void uploadStep(){
   //確保連線正常
+   
   while (0 == content.connect(SITE_URL, 80))
     {
       Serial.println("Re-Connecting to WebSite");
